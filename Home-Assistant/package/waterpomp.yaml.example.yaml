@@ -1,0 +1,8 @@
+rest_command:
+  pomp_aan:
+    url: "http://ARDUINO_IP:8000/pomp/aan"
+    method: GET
+
+  pomp_uit:
+    url: "http://ARDUINO_IP:8000/pomp/uit"
+    method: GET

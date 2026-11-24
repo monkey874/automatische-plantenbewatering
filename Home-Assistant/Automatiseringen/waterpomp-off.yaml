@@ -1,0 +1,16 @@
+- id: '1795525671421'
+  alias: waterpomp uit
+  description: ''
+  triggers:
+  - trigger: switch.turned_off
+    target:
+      entity_id: input_boolean.waterpomp_switch
+    options:
+      behavior: each
+      for: 00:00:00
+  conditions: []
+  actions:
+  - action: rest_command.pomp_uit
+    metadata: {}
+    data: {}
+  mode: single

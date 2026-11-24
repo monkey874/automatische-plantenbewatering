@@ -1,0 +1,17 @@
+- id: '1795526152206'
+  alias: automatisch pomp
+  description: ''
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - input_number.grondvochtigheid
+    below: 200
+  conditions: []
+  actions:
+  - action: rest_command.pomp_aan
+    metadata: {}
+    data: {}
+  - action: rest_command.pomp_uit
+    metadata: {}
+    data: {}
+  mode: single

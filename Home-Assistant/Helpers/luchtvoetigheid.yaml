@@ -1,0 +1,14 @@
+entity_id: input_number.luchtvochtigheid
+state: '62.0'
+last_changed: '2026-11-24T14:47:20.569Z'
+last_updated: '2026-11-24T14:47:20.569Z'
+attributes:
+  min: 0
+  max: 100
+  step: 10
+  mode: box
+  initial: null
+  editable: true
+  unit_of_measurement: '%'
+  icon: mdi:shuffle-disabled
+  friendly_name: Luchtvochtigheid

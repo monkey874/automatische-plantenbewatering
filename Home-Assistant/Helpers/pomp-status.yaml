@@ -1,0 +1,11 @@
+entity_id: input_select.pompstatus
+state: uit
+last_changed: '2026-11-24T14:18:30.282Z'
+last_updated: '2026-11-24T14:18:30.282Z'
+attributes:
+  options:
+    - aan
+    - uit
+  editable: true
+  icon: mdi:water-pump
+  friendly_name: Pompstatus

@@ -1,0 +1,32 @@
+- id: '1795523594369'
+  alias: Arduino - Sensorgegevens bijwerken
+  description: Ontvangt meetgegevens van de Arduino.
+  triggers:
+  - trigger: webhook
+    webhook_id: arduino_uno_r4
+    allowed_methods:
+    - POST
+    local_only: true
+  conditions: []
+  actions:
+  - action: input_number.set_value
+    target:
+      entity_id: input_number.temperatuur
+    data:
+      value: '{{ trigger.json.temperatuur | float }}'
+  - action: input_number.set_value
+    target:
+      entity_id: input_number.luchtvochtigheid
+    data:
+      value: '{{ trigger.json.luchtvochtigheid | float }}'
+  - action: input_number.set_value
+    data:
+      value: '{{ trigger.json.water | float }}'
+    target:
+      entity_id: input_number.grondvochtigheid
+  - action: input_select.select_option
+    target:
+      entity_id: input_select.pompstatus
+    data:
+      option: '{{ trigger.json.pompstatus }}'
+  mode: single

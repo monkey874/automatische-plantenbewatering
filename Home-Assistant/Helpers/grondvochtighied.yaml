@@ -1,0 +1,13 @@
+entity_id: input_number.grondvochtigheid
+state: '691.0'
+last_changed: '2026-11-24T14:46:57.823Z'
+last_updated: '2026-11-24T14:46:57.823Z'
+attributes:
+  min: 0
+  max: 1023
+  step: 10
+  mode: box
+  initial: null
+  editable: true
+  icon: mdi:temperature-celsius
+  friendly_name: Grondvochtigheid

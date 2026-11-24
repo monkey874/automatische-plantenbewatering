@@ -1,0 +1,17 @@
+# Home Assistant gevoelige bestanden
+secrets.yaml
+.storage/
+backups/
+*.db
+*.db-shm
+*.db-wal
+*.log
+
+# Persoonlijke instellingen
+.env
+*.key
+*.pem
+
+# Tijdelijke bestanden
+__pycache__/
+.DS_Store

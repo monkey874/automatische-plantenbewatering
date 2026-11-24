@@ -1,0 +1,8 @@
+entity_id: input_boolean.waterpomp_switch
+state: 'off'
+last_changed: '2026-11-24T14:18:26.219Z'
+last_updated: '2026-11-24T14:18:26.219Z'
+attributes:
+  editable: true
+  icon: mdi:water
+  friendly_name: waterpomp switch

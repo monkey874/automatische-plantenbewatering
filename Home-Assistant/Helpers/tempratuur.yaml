@@ -1,0 +1,14 @@
+entity_id: input_number.temperatuur
+state: '18.9'
+last_changed: '2026-11-24T14:46:31.929Z'
+last_updated: '2026-11-24T14:46:31.929Z'
+attributes:
+  min: -10
+  max: 60
+  step: 10
+  mode: box
+  initial: null
+  editable: true
+  unit_of_measurement: °C
+  icon: mdi:sun-thermometer
+  friendly_name: Temperatuur
