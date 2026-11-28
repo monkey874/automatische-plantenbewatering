@@ -1,22 +1,32 @@
-# Testplan - automatis plantbewateringsysteem
+# Testplan – Automatisch plantenbewateringssysteem
+In dit testplan beschrijf ik hoe het automatische plantenbewateringssysteem wordt getest. Dit is een systeem waarmee je planten kunt bewateren zonder dit zelf te hoeven doen. Tijdens het testen worden verschillende onderdelen van het systeem gecontroleerd. Denk hierbij aan het testen van de sensoren en het controleren van de HTTP-verzoeken van en naar Home Assistant. Het systeem wordt in eerste instantie door mijzelf getest. Daarnaast laat ik het systeem een paar nachten aanstaan, zodat ik kan controleren of alles gedurende langere tijd goed blijft werken. Voor meer informatie over het project verwijs ik naar het voorbereidingsdocument.
 
-## Inleiding
-In dit testplan word het automatis plantbewateringsysteem. Dit is een systeem waarmee je planten kan bewateren zonder het zelf te doen. Tijdens het testen worden verschillende onderdelen van het systeem gecontrolleerd. Denk hierbij aan het testen van sensoren, Het controleren van de http-requets van/naar de homeAssistant.
+- **Gemaakt door:** Rick Salden
+- **Onderwerp:** Testvoorbereiding
+- **Datum:** 15-11-2026
 
-De Applicatie word gestest door mijzelf en doorzich zelf. Ik zal het systeem voor een paar nachten aan laten staan zodat ik zeker weet dat alles vlekkeloos werkt. Voor meer informatie iver het poject verwijs ik naar het voorbereidings 
+---
+
+# Inhoudsopgave
+- [Rapportage](#rapportage)
+- [Organisatie](#organisatie)
+- [Tests](#tests)
+
+---
+
+## Rapportage
+Na het uitvoeren van de tests worden de resultaten in het testrapport genoteerd. Dit geeft een duidelijk overzicht van wat wel en niet goed werkt. Zo kan ik aantonen dat de verschillende onderdelen getest zijn.
+
+---
+
+## Organisatie
+In dit hoofdstuk beschrijf ik wie de tests uitvoert. Zoals in de inleiding al is aangegeven, test ik het systeem in eerste instantie zelf. Tijdens het testen controleer ik alle gemaakte functionaliteiten. Omdat ik ook maar een mens ben, wil ik het systeem daarnaast een paar nachten zelfstandig laten draaien. Zo kan ik controleren of het systeem ook zonder mijn aanwezigheid goed blijft werken.
 
 
-## Rappotage
-Na het uivoeren van de tests zullen de resultaten in het testrapport genoteerd worden. Dit geeft dan een duidelijk overzicht wat wel en niet goed werkt, en kan ik bewijzen dat de volgende onderdelen getest zijn.
+## Tests
+Hieronder zijn de belangrijkste tests uitgewerkt om te controleren of het systeem goed werkt. Sommige tests lijken misschien overbodig, maar zijn wel degelijk van belang.
 
-
-## organisatie
-In dit hoofdstuk beschrijf ik wie wat gaat testen en zoals uit de inleiding al wat bleek test ik de applicatie in eersten stantie zelf, wanneer ik dit test zal ik allegemaakte functionaliteiten testen. Omdat ik ook gewoon maar een mens ben wil ik het systeem ook zichzelf laten testen zodat ik zeker kan zijn dat het systeem na de gewenste situwatie reageerd.
-
-## tests
-Hieronder zijn de belangrijkste tests uitgewerkt om te kijken als het systeem goed werkt. Sommige tests zullen mischien overbodig klinken maar zijn wel van belang.
-
-- DHT11 uitlezen
+- **DHT11 uitlezen**
     - **Doel:** Controleren of de DHT11-sensor goed werkt en meetgegevens naar de Arduino verstuurt.
     - **Benodigdheden:** Laptop met Arduino IDE, Arduino UNO R4 WiFi, DHT11-sensor en USB-C-kabel.
     - **Stappen:**
@@ -30,23 +40,25 @@ Hieronder zijn de belangrijkste tests uitgewerkt om te kijken als het systeem go
         - Open de Serial Monitor in de Arduino IDE.
         - Controleer of de sensor meetgegevens doorgeeft.
     - **Verwacht resultaat:** Er verschijnt een JSON-bericht met de gemeten temperatuur en luchtvochtigheid in de Serial Monitor.
-    
-- Grondvochtigheid uitlezen
+
+
+- **Grondvochtigheid uitlezen**
     - **Doel:** Controleren of de grondvochtigheidssensor werkt en meetgegevens naar de Arduino stuurt.
     - **Benodigdheden:** Laptop met Arduino IDE, Arduino, USB-C-kabel en grondvochtigheidssensor.
     - **Stappen:**
         - Verbind de Arduino met de laptop via een USB-C-kabel.
         - Verbind de grondvochtigheidssensor met de Arduino.
-            - VCC naar 3.3V.
-            - GND naar GND.
-            - AO naar analoge pin A0.
+            - VCC → 3.3V
+            - GND → GND
+            - AO → analoge pin A0
         - Upload de code naar de Arduino via de Arduino IDE.
         - Open de Serial Monitor.
         - Houd de sensor eerst in droge en daarna in vochtige grond.
         - Vergelijk de meetwaarden.
     - **Verwacht resultaat:** De Arduino geeft meetwaarden weer. Deze veranderen wanneer de sensor in drogere of vochtigere grond wordt geplaatst.
 
-- HTTP GET-verzoek ontvangen
+
+- **HTTP GET-verzoek ontvangen**
     - **Doel:** Controleren of de Arduino HTTP GET-verzoeken kan ontvangen en verwerken.
     - **Benodigdheden:** Laptop, Arduino, USB-C-kabel, wifi-netwerk en webbrowser.
     - **Stappen:**
@@ -60,7 +72,8 @@ Hieronder zijn de belangrijkste tests uitgewerkt om te kijken als het systeem go
         - Herhaal dit met `:8000/pomp/uit`.
     - **Verwacht resultaat:** De Arduino ontvangt de GET-verzoeken en voert het bijbehorende commando uit.
 
-- HTTP POST-verzoek versturen
+
+- **HTTP POST-verzoek versturen**
     - **Doel:** Controleren of de Arduino gegevens via een HTTP POST-verzoek kan versturen.
     - **Benodigdheden:** Laptop met Arduino IDE, Arduino, USB-C-kabel, wifi-netwerk en Home Assistant.
     - **Stappen:**
@@ -73,7 +86,8 @@ Hieronder zijn de belangrijkste tests uitgewerkt om te kijken als het systeem go
         - Controleer of het verzoek succesvol wordt verstuurd.
     - **Verwacht resultaat:** De Arduino verstuurt een POST-verzoek met de meetgegevens naar de ingestelde webhook van Home Assistant.
 
-- Home Assistant ontvangt gegevens
+
+- **Home Assistant ontvangt gegevens**
     - **Doel:** Controleren of Home Assistant de gegevens van de Arduino ontvangt en verwerkt.
     - **Benodigdheden:** Arduino, laptop, wifi-netwerk en Home Assistant.
     - **Stappen:**
@@ -86,7 +100,8 @@ Hieronder zijn de belangrijkste tests uitgewerkt om te kijken als het systeem go
         - Controleer of de waarden overeenkomen met de gegevens uit de Arduino.
     - **Verwacht resultaat:** Home Assistant ontvangt de meetgegevens en werkt de bijbehorende waarden bij.
 
-- Pomp handmatig bedienen via Home Assistant
+
+- **Pomp handmatig bedienen via Home Assistant**
     - **Doel:** Controleren of de waterpomp handmatig via Home Assistant kan worden aangestuurd.
     - **Benodigdheden:** Arduino, Motor Driver Shield, waterpomp, voeding, laptop en Home Assistant.
     - **Stappen:**
@@ -101,7 +116,8 @@ Hieronder zijn de belangrijkste tests uitgewerkt om te kijken als het systeem go
         - Controleer of de pomp stopt.
     - **Verwacht resultaat:** De waterpomp gaat aan en uit wanneer deze via Home Assistant wordt aangestuurd.
 
-- Pomp automatisch inschakelen
+
+- **Pomp automatisch inschakelen**
     - **Doel:** Controleren of de waterpomp automatisch aangaat wanneer de grond te droog is.
     - **Benodigdheden:** Arduino, grondvochtigheidssensor, Motor Driver Shield, waterpomp, voeding en Home Assistant.
     - **Stappen:**
@@ -114,7 +130,8 @@ Hieronder zijn de belangrijkste tests uitgewerkt om te kijken als het systeem go
         - Controleer of de waterpomp aangaat.
     - **Verwacht resultaat:** De waterpomp wordt automatisch ingeschakeld wanneer de grondvochtigheid onder de ingestelde grenswaarde komt.
 
-- Pomp automatisch uitschakelen
+
+- **Pomp automatisch uitschakelen**
     - **Doel:** Controleren of de waterpomp automatisch uitschakelt wanneer de grond voldoende vochtig is.
     - **Benodigdheden:** Arduino, grondvochtigheidssensor, Motor Driver Shield, waterpomp, voeding en Home Assistant.
     - **Stappen:**
@@ -126,7 +143,8 @@ Hieronder zijn de belangrijkste tests uitgewerkt om te kijken als het systeem go
         - Controleer of de waterpomp stopt.
     - **Verwacht resultaat:** De waterpomp wordt automatisch uitgeschakeld wanneer de ingestelde uitschakelgrens wordt bereikt.
 
-- Test bij uitval van Home Assistant
+
+- **Test bij uitval van Home Assistant**
     - **Doel:** Controleren wat er gebeurt wanneer Home Assistant tijdelijk niet beschikbaar is.
     - **Benodigdheden:** Arduino, waterpomp, Motor Driver Shield, laptop en Home Assistant.
     - **Stappen:**
@@ -139,9 +157,10 @@ Hieronder zijn de belangrijkste tests uitgewerkt om te kijken als het systeem go
         - Controleer of de communicatie weer werkt.
     - **Verwacht resultaat:** Home Assistant kan tijdens de storing geen nieuwe commando's versturen. Na het opnieuw opstarten controleer ik of de communicatie wordt hersteld.
 
-- Wifi verbinden
+
+- **Wifi verbinden**
     - **Doel:** Controleren of de Arduino verbinding kan maken met het wifi-netwerk.
-    - **Benodigdheden:** Arduino, laptop, USB-C-kabel en een wifi-netwerk.
+    - **Benodigdheden:** Arduino, laptop, USB-C-kabel en wifi-netwerk.
     - **Stappen:**
         - Verbind de Arduino met de laptop.
         - Controleer of de juiste wifi-instellingen in het programma staan.
@@ -152,7 +171,8 @@ Hieronder zijn de belangrijkste tests uitgewerkt om te kijken als het systeem go
         - Controleer of de Arduino een IP-adres ontvangt.
     - **Verwacht resultaat:** De Arduino maakt verbinding met wifi en ontvangt een geldig IP-adres.
 
-- Wifi valt weg
+
+- **Wifi valt weg**
     - **Doel:** Controleren wat er gebeurt wanneer de wifi-verbinding van de Arduino wegvalt.
     - **Benodigdheden:** Arduino, laptop, USB-C-kabel en wifi-netwerk.
     - **Stappen:**
@@ -165,9 +185,10 @@ Hieronder zijn de belangrijkste tests uitgewerkt om te kijken als het systeem go
         - Controleer of de communicatie met Home Assistant weer werkt.
     - **Verwacht resultaat:** De wifi-verbinding valt weg wanneer het netwerk wordt uitgeschakeld. Na herstel van het netwerk controleer ik of de Arduino opnieuw verbinding maakt.
 
-- Langdurige test
+
+- **Langdurige test**
     - **Doel:** Controleren of het complete systeem gedurende langere tijd goed blijft werken.
-    - **Benodigdheden:** Complete plantenbewateringssysteem, Arduino, sensoren, waterpomp, voeding en Home Assistant.
+    - **Benodigdheden:** Het complete plantenbewateringssysteem, Arduino, sensoren, waterpomp, voeding en Home Assistant.
     - **Stappen:**
         - Sluit alle onderdelen aan.
         - Start de Arduino en Home Assistant.
@@ -178,7 +199,8 @@ Hieronder zijn de belangrijkste tests uitgewerkt om te kijken als het systeem go
         - Controleer of er geen onverwachte storingen optreden.
     - **Verwacht resultaat:** Het systeem blijft gedurende de testperiode werken zonder onverwachte storingen.
 
-- Sensor loskoppelen
+
+- **Sensor loskoppelen**
     - **Doel:** Controleren wat er gebeurt wanneer een sensor niet meer aangesloten is.
     - **Benodigdheden:** Arduino, laptop, USB-C-kabel, DHT11 en grondvochtigheidssensor.
     - **Stappen:**
@@ -191,4 +213,6 @@ Hieronder zijn de belangrijkste tests uitgewerkt om te kijken als het systeem go
         - Sluit de sensor opnieuw aan.
         - Controleer of de sensor weer meetwaarden doorgeeft.
         - Herhaal dit eventueel met de andere sensor.
-    - **Verwacht resultaat:** De Arduino merkt dat de meetgegevens van de losgekoppelde sensor ontbreken of ongeldig zijn. Na opnieuw aansluiten controleer ik of de sensor weer werkt.
+    - **Verwacht resultaat:** Controleer of de Arduino merkt dat de meetgegevens van de losgekoppelde sensor ontbreken of ongeldig zijn. Na opnieuw aansluiten controleer ik of de sensor weer werkt.
+
+---
